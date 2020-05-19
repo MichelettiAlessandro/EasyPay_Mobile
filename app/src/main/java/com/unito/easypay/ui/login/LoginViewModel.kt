@@ -1,25 +1,13 @@
 package com.unito.easypay.ui.login
 
-import android.telecom.Call
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import androidx.lifecycle.viewModelScope
-import com.android.volley.Response
 import com.unito.easypay.data.LoginRepository
 import com.unito.easypay.data.Result
 
 import com.unito.easypay.R
-import com.unito.easypay.data.Mappable
-import com.unito.easypay.data.model.LoggedInUser
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import javax.security.auth.callback.Callback
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -29,9 +17,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String, loginActivity: LoginActivity) {
+    fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password, loginActivity)
+        val result = loginRepository.login(username, password)
 
         if (result is Result.Success) {
             _loginResult.value =

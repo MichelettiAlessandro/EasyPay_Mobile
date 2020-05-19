@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
 
-
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
@@ -72,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
                 }
                 startActivity(intent)
             }
-
             //Complete and destroy login activity once successful
         })
 
@@ -97,8 +95,7 @@ class LoginActivity : AppCompatActivity() {
 
                         loginViewModel.login(
                             username.text.toString(),
-                            password.text.toString(),
-                            this@LoginActivity
+                            password.text.toString()
                         )
                 }
                 false
@@ -106,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
 
             login.setOnClickListener {
                 //loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString(), this@LoginActivity)
+                loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
 
