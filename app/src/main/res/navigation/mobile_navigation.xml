@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/open_app">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.unito.easypay.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.unito.easypay.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.unito.easypay.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/registration"
+        android:name="com.unito.easypay.Registration"
+        android:label="Registrazione"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registration_to_registrationCommerciante"
+            app:destination="@id/registrationCommerciante" />
+        <action
+            android:id="@+id/action_registration_to_registrationCliente"
+            app:destination="@id/registrationCliente" />
+        <action
+            android:id="@+id/action_registration_to_open_app"
+            app:destination="@id/open_app" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationCliente"
+        android:name="com.unito.easypay.RegistrationCliente"
+        android:label="Registrazione Cliente"
+        tools:layout="@layout/fragment_registration_cliente">
+        <action
+            android:id="@+id/action_registrationCliente_to_registration"
+            app:destination="@id/registration" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationCommerciante"
+        android:name="com.unito.easypay.RegistrationCommerciante"
+        android:label="Registrazione Commerciante"
+        tools:layout="@layout/fragment_registration_commerciante">
+        <action
+            android:id="@+id/action_registrationCommerciante_to_registration"
+            app:destination="@id/registration" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.unito.easypay.ui.login.LoginActivity"
+        android:label="@string/title_activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/open_app"
+        android:name="com.unito.easypay.open_app"
+        android:label="@string/welcome"
+        tools:layout="@layout/fragment_open_app">
+        <action
+            android:id="@+id/action_open_app_to_registration"
+            app:destination="@id/registration" />
+        <action
+            android:id="@+id/action_open_app_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_open_app_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>

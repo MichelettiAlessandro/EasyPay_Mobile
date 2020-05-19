@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">EasyPay</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">LOGIN</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="profileName">Nome</string>
+    <string name="profileCognome">Cognome</string>
+    <string name="profileDatanascita">Data di nascita</string>
+    <string name="profileCodicefiscale">Codice Fiscale</string>
+    <string name="profileTelefono">Telefono</string>
+    <string name="profileUsername">Username</string>
+    <string name="profilePartitaIva">Partita Iva</string>
+    <string name="profileRagioneSociale">Ragione Sociale</string>
+    <string name="registrati">Non sei registrato? Registrati QUI</string>
+    <string name="isCliente">Cliente</string>
+    <string name="isCommerciante">Commerciante</string>
+    <string name="avanti">Avanti</string>
+    <string name="registrazione">REGISTRATI</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
