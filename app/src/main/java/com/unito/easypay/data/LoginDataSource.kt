@@ -18,7 +18,8 @@ class LoginDataSource {
         try {
             val urlstring = "https://easypay-unito.herokuapp.com/api/login"
             val token = getJSON(username, password, urlstring)
-            val User = LoggedInUser(java.util.UUID.randomUUID().toString(), token)
+            val accessToken = token.getString("token")
+            val User = LoggedInUser(java.util.UUID.randomUUID().toString(), accessToken)
             return Result.Success(User)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))
@@ -26,8 +27,8 @@ class LoginDataSource {
     }
 
     @Throws(Throwable::class)
-    private fun getJSON(username: String, password: String, urlString : String): String {
-        var token = ""
+    private fun getJSON(username: String, password: String, urlString : String): JSONObject {
+        var token = JSONObject()
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
 
         val cred = JSONObject()
@@ -50,7 +51,7 @@ class LoginDataSource {
                 val bufferedReader = URLConnection.inputStream.bufferedReader()
 
                 Log.d("TEST", "2")
-                token = bufferedReader.use { it.readText() }
+                token = JSONObject(bufferedReader.use { it.readText() })
                 bufferedReader.close()
             }
         }

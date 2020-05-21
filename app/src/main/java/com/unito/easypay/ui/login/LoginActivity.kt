@@ -21,6 +21,7 @@ import com.unito.easypay.MainActivity
 import com.unito.easypay.R
 import com.unito.easypay.Registration
 import com.unito.easypay.data.LoginDataSource
+import com.unito.easypay.data.model.LoggedInUser
 import com.unito.easypay.ui.profile.ProfileFragment
 
 class LoginActivity : AppCompatActivity() {
@@ -57,17 +58,19 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
+            var token: String
             //loading.visibility = View.GONE
-            Log.d("OU", loginResult.toString())
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
             if (loginResult.success != null) {
+                token = loginResult.success.token
                 updateUiWithUser(loginResult.success)
                 setResult(Activity.RESULT_OK)
                 finish()
+
                 val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra("result", "ok")
+                    putExtra("token", token)
                 }
                 startActivity(intent)
             }

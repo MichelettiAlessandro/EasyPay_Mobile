@@ -6,22 +6,43 @@
     app:startDestination="@id/open_app">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_payment"
         android:name="com.unito.easypay.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_payment"
+            app:destination="@id/navigation_movimenti" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_movimenti"
         android:name="com.unito.easypay.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_payment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_payment_to_navigation_home"
+            app:destination="@id/navigation_payment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/navigation_profile"
         android:name="com.unito.easypay.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_payment"
+            app:destination="@id/navigation_movimenti" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_home"
+            app:destination="@id/navigation_payment" />
+    </fragment>
     <fragment
         android:id="@+id/registration"
         android:name="com.unito.easypay.Registration"
@@ -72,7 +93,7 @@
             android:id="@+id/action_open_app_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_open_app_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_open_app_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 </navigation>

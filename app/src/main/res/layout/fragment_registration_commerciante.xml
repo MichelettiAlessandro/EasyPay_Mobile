@@ -15,33 +15,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldPasswordCommerciante2" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldPassword" />
 
     <EditText
-        android:id="@+id/fieldPasswordCommerciante2"
+        android:id="@+id/fieldPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldUsernameCommerciante2" />
-
-    <EditText
-        android:id="@+id/fieldUsernameCommerciante2"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="36dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/profileUsername"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldEmailCommerciante2" />
+        tools:layout_editor_absoluteY="430dp" />
 
     <AutoCompleteTextView
         android:id="@+id/fieldRagioneSociale"
@@ -55,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fieldEmailCommerciante2"
+        android:id="@+id/fieldEmail"
         android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_marginTop="40dp"

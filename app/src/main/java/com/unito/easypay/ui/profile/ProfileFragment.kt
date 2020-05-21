@@ -1,6 +1,8 @@
 package com.unito.easypay.ui.profile
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,13 +21,30 @@ class ProfileFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        val root = inflater.inflate(R.layout.fragment_profile, container, false)
         profileViewModel =
                 ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_profile, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val shared = activity?.getPreferences(Context.MODE_PRIVATE)
+        var token = ""
+        if (shared != null) {
+            token = shared.getString("token", "dafValue").toString()
+        }
+        if(token != ""){
+            var userData  = profileViewModel.getUser(token)
+            var nome = userData.getString("nome")
+            var cognome = userData.getString("cognome")
+            var cf = userData.getString("cf")
+
+            val fieldNome = root.findViewById<TextView>(R.id.fieldNome)
+            fieldNome.text = nome
+            val fieldCognome = root.findViewById<TextView>(R.id.fieldCognome)
+            fieldCognome.text = cognome
+            val fieldCF = root.findViewById<TextView>(R.id.fieldCF)
+            fieldCF.text = cf
+
+        }
+
+
         return root
     }
 }

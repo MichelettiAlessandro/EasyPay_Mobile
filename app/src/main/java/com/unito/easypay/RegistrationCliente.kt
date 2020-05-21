@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_registration.*
+import android.widget.Toast
+import com.unito.easypay.data.Result
+import org.json.JSONObject
+import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,9 +43,17 @@ class RegistrationCliente : Fragment() {
         var registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
         registrazione.setOnClickListener {
 
-            //Controllo che tutti i dati siano compilati
+                var data = JSONObject()
+                data.put("nome", R.id.fieldNome.toString())
+                data.put("cognome", R.id.fieldCognome.toString())
+                data.put("codicefiscale", R.id.fieldCodiceFiscale.toString())
+                data.put("telefono", R.id.fieldTelefono.toString())
+                data.put("email", R.id.fieldEmail.toString())
+                data.put("password", R.id.fieldPassword.toString())
+                data.put("confermapassword", R.id.fieldConfermaPassword.toString())
+                var model = ModelRegistrazione()
+                //var result = model.registrazione(data)
 
-            // Eseguo l'inserimento del nuovo utente
 
             // Mi sposto nell'interfaccia dei movimenti
             // findNavController().navigate(R.id.)

@@ -8,5 +8,8 @@ data class LoggedInUser(
     val token : String = ""
 ){
 
+    fun getUserToken() : String{
+        return token
+    }
 }
 
