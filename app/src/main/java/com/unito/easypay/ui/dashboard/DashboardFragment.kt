@@ -1,5 +1,6 @@
 package com.unito.easypay.ui.dashboard
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,10 +25,14 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val shared = activity?.getPreferences(Context.MODE_PRIVATE)
+        var token = ""
+        if (shared != null) {
+            token = shared.getString("token", "dafValue").toString()
+        }
+        if(token != "") {
+            //var userData = dashboardViewModel.getMovimenti(token)
+        }
         return root
     }
 }

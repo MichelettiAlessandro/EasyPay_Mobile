@@ -9,12 +9,10 @@ import javax.net.ssl.HttpsURLConnection
 
 class ProfileViewModel : ViewModel() {
 
-    private lateinit var  userData : Map<String, String>
-
     fun getUser(token : String): JSONObject {
         val urlstring = "https://easypay-unito.herokuapp.com/api/clienti/self"
-        val result = getJSON(urlstring, token)
-        return result
+        val userData = getJSON(urlstring, token)
+        return userData
     }
 
     private fun getJSON(urlString: String, accessToken: String): JSONObject {

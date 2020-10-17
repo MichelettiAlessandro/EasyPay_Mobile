@@ -1,15 +1,15 @@
 package com.unito.easypay
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import com.unito.easypay.data.Result
+import androidx.lifecycle.ViewModelProvider
 import org.json.JSONObject
-import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +25,8 @@ class RegistrationCliente : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var modelRegistrazione: ModelRegistrazione
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +48,17 @@ class RegistrationCliente : Fragment() {
                 var data = JSONObject()
                 data.put("nome", R.id.fieldNome.toString())
                 data.put("cognome", R.id.fieldCognome.toString())
-                data.put("codicefiscale", R.id.fieldCodiceFiscale.toString())
-                data.put("telefono", R.id.fieldTelefono.toString())
-                data.put("email", R.id.fieldEmail.toString())
+                data.put("cf", R.id.fieldCodiceFiscale.toString())
+                data.put("type", "cliente")
+                //data.put("telefono", R.id.fieldTelefono.toString())
+                data.put("username", R.id.fieldEmail.toString())
                 data.put("password", R.id.fieldPassword.toString())
-                data.put("confermapassword", R.id.fieldConfermaPassword.toString())
-                var model = ModelRegistrazione()
-                //var result = model.registrazione(data)
+                //data.put("confermapassword", R.id.fieldConfermaPassword.toString())
+                Log.d("REG", data.toString())
+                modelRegistrazione = ViewModelProvider(this).get(ModelRegistrazione::class.java)
+                var result = modelRegistrazione.registration(data)
+                Log.d("REG", result.toString())
+            //var result = model.registrazione(data)
 
 
             // Mi sposto nell'interfaccia dei movimenti

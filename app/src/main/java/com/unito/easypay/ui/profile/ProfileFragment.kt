@@ -41,10 +41,7 @@ class ProfileFragment : Fragment() {
             fieldCognome.text = cognome
             val fieldCF = root.findViewById<TextView>(R.id.fieldCF)
             fieldCF.text = cf
-
         }
-
-
         return root
     }
 }

@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_registrationCliente_to_registration"
             app:destination="@id/registration" />
+        <action
+            android:id="@+id/action_registrationCliente_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/registrationCommerciante"
@@ -75,6 +78,9 @@
         <action
             android:id="@+id/action_registrationCommerciante_to_registration"
             app:destination="@id/registration" />
+        <action
+            android:id="@+id/action_registrationCommerciante_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"

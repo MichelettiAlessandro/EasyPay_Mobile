@@ -36,17 +36,17 @@ class RegistrationCommerciante : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var rootview: View = inflater.inflate(R.layout.fragment_registration_cliente, container, false)
-        var registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
-        registrazione.setOnClickListener {
+        //var registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
+        //registrazione.setOnClickListener {
 
             //Controllo che tutti i dati siano compilati
 
             // Eseguo l'inserimento del nuovo utente
-            
+
 
             // Mi sposto nell'interfaccia dei movimenti
             // findNavController().navigate(R.id.)
-        }
+        //}
         return rootview
     }
 

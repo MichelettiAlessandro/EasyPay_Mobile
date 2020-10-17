@@ -29,7 +29,6 @@ class open_app : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
@@ -37,7 +36,6 @@ class open_app : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         var rootview: View = inflater.inflate(R.layout.fragment_open_app, container, false)
         var btnReg: Button = rootview.findViewById(R.id.btn_registrati)
         btnReg.setOnClickListener {
