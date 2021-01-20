@@ -1,14 +1,16 @@
 package com.unito.easypay
 
-import android.content.Intent
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,30 +43,73 @@ class RegistrationCliente : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(R.layout.fragment_registration_cliente, container, false)
+        var rootview: View = inflater.inflate(
+            R.layout.fragment_registration_cliente,
+            container,
+            false
+        )
         var registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
+
         registrazione.setOnClickListener {
 
-                var data = JSONObject()
-                data.put("nome", R.id.fieldNome.toString())
-                data.put("cognome", R.id.fieldCognome.toString())
-                data.put("cf", R.id.fieldCodiceFiscale.toString())
+            var fieldNome = rootview.findViewById<TextView>(R.id.fieldNome).text.toString();
+            var fieldCognome = rootview.findViewById<TextView>(R.id.fieldCognome).text.toString();
+            var fieldCodiceFiscale = rootview.findViewById<TextView>(R.id.fieldCodiceFiscale).text.toString();
+            var fieldEmail = rootview.findViewById<TextView>(R.id.fieldEmail).text.toString();
+            var fieldPhone = rootview.findViewById<TextView>(R.id.fieldTelefono).text.toString();
+            var fieldAddress = rootview.findViewById<TextView>(R.id.fieldAddress).text.toString();
+            var fieldBirthDate = rootview.findViewById<TextView>(R.id.fieldDataNascita).text.toString();
+            var fieldPassword = rootview.findViewById<TextView>(R.id.fieldPassword).text.toString();
+            var data = JSONObject()
+
+            val separated = fieldBirthDate.split("/".toRegex()).toTypedArray()
+            var mm = separated[1]
+            if(separated[1].length == 1){
+                mm = "0"+separated[1];
+            }
+            val yyyy = separated[2]
+            val dd = separated[0]
+            val newDate = "$yyyy-$mm-$dd"
+
+            if(fieldNome != ""
+                && fieldCognome != ""
+                && fieldCodiceFiscale != ""
+                && fieldEmail != ""
+                && fieldPhone != ""
+                && fieldAddress != ""
+                && fieldBirthDate != ""
+                && fieldPassword != ""){
+
+                data.put("nome", fieldNome)
+                data.put("cognome", fieldCognome)
+                data.put("cf", fieldCodiceFiscale)
                 data.put("type", "cliente")
-                //data.put("telefono", R.id.fieldTelefono.toString())
-                data.put("username", R.id.fieldEmail.toString())
-                data.put("password", R.id.fieldPassword.toString())
-                //data.put("confermapassword", R.id.fieldConfermaPassword.toString())
+                data.put("phone", fieldPhone)
+                data.put("email", fieldEmail)
+                data.put("password", fieldPassword)
+                data.put("birth_date", newDate)
+                data.put("address", fieldAddress)
+
                 Log.d("REG", data.toString())
+
                 modelRegistrazione = ViewModelProvider(this).get(ModelRegistrazione::class.java)
                 var result = modelRegistrazione.registration(data)
                 Log.d("REG", result.toString())
-            //var result = model.registrazione(data)
 
-
-            // Mi sposto nell'interfaccia dei movimenti
-            // findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_registrationCliente_to_open_app)
+            }else{
+                showAlertDialogButtonClicked(rootview)
+            }
         }
         return rootview
+    }
+    private fun showAlertDialogButtonClicked(view: View?) {        // setup the alert builder
+        val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
+        builder.setTitle("My title")
+        builder.setMessage("This is my message.") // add a button
+        builder.setPositiveButton("OK", null) // create and show the alert dialog
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
     companion object {

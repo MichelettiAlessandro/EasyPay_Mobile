@@ -34,7 +34,6 @@ class ProfileViewModel : ViewModel() {
             HttpsURLConnection.HTTP_OK -> {
                 val bufferedReader = urlConnection.inputStream.bufferedReader()
                 result = JSONObject(bufferedReader.use { it.readText() })
-                Log.d("TEST", result.toString())
                 bufferedReader.close()
             }
         }

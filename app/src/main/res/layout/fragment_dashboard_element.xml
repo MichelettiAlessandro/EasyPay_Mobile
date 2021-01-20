@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/EasyPay.ListText"
+        android:layout_width="142dp"
+        android:layout_height="46dp"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/importo"
+        style="@style/EasyPay.ListText.SecondLine"
+        android:layout_width="5dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+</LinearLayout>

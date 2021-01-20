@@ -50,7 +50,5 @@ class MainActivity : AppCompatActivity() {
         }
         val navController = findNavController(R.id.nav_host_fragment)
         navController.navigate(R.id.action_open_app_to_navigation_profile)
-        }
-
-
+    }
 }

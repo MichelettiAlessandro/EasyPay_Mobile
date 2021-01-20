@@ -16,8 +16,10 @@ class ContoFragment : Fragment() {
 
     private lateinit var viewModel: ContoViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.conto_fragment, container, false)
     }
 

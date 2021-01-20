@@ -32,7 +32,7 @@ class LoginDataSource {
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
 
         val cred = JSONObject()
-        cred.put("username", username)
+        cred.put("email", username)
         cred.put("password", password)
         StrictMode.setThreadPolicy(policy)
         val url = URL(urlString)
@@ -49,8 +49,6 @@ class LoginDataSource {
         when (URLConnection.responseCode) {
             HttpsURLConnection.HTTP_OK -> {
                 val bufferedReader = URLConnection.inputStream.bufferedReader()
-
-                Log.d("TEST", "2")
                 token = JSONObject(bufferedReader.use { it.readText() })
                 bufferedReader.close()
             }
@@ -59,7 +57,6 @@ class LoginDataSource {
             throw Throwable("HTTP error code: " + URLConnection.responseCode)
         }
         URLConnection.disconnect()
-
         return token
     }
 

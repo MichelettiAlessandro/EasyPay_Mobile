@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +26,8 @@ class RegistrationCommerciante : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var modelRegistrazione: ModelRegistrazione
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,18 +41,33 @@ class RegistrationCommerciante : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(R.layout.fragment_registration_cliente, container, false)
-        //var registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
-        //registrazione.setOnClickListener {
+        var rootview: View = inflater.inflate(R.layout.fragment_registration_commerciante, container, false)
+        var registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
+        registrazione.setOnClickListener {
 
-            //Controllo che tutti i dati siano compilati
+            var fieldNome = rootview.findViewById<TextView>(R.id.fieldNome).text.toString();
+            var fieldCognome = rootview.findViewById<TextView>(R.id.fieldCognome).text.toString();
+            var fieldCodiceFiscale = rootview.findViewById<TextView>(R.id.fieldCodiceFiscale).text.toString();
+            var fieldEmail = rootview.findViewById<TextView>(R.id.fieldEmail).text.toString();
+            var fieldPassword = rootview.findViewById<TextView>(R.id.fieldPassword).text.toString();
+            var data = JSONObject()
 
-            // Eseguo l'inserimento del nuovo utente
+            data.put("nome", fieldNome)
+            data.put("cognome", fieldCognome)
+            data.put("cf", fieldCodiceFiscale)
+            data.put("type", "cliente")
+            //data.put("telefono", R.id.fieldTelefono.toString())
+            data.put("email", fieldEmail)
+            data.put("password", fieldPassword)
+            //data.put("confermapassword", R.id.fieldConfermaPassword.toString())
+            modelRegistrazione = ViewModelProvider(this).get(ModelRegistrazione::class.java)
+            var result = modelRegistrazione.registration(data)
+            //var result = model.registrazione(data)
 
 
             // Mi sposto nell'interfaccia dei movimenti
-            // findNavController().navigate(R.id.)
-        //}
+            findNavController().navigate(R.id.action_registrationCliente_to_open_app)
+        }
         return rootview
     }
 

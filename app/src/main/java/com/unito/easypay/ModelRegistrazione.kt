@@ -13,17 +13,11 @@ import javax.net.ssl.HttpsURLConnection
 
 class ModelRegistrazione : ViewModel() {
 
-    fun registration(data: JSONObject): Result<LoggedInUser> {
-        try {
-            Log.d("REG", "1")
-            val url = "https://easypay-unito.herokuapp.com/api/clienti"
-            val token = getJSON(data, url)
-            val accessToken = token.getString("token")
-            val user = LoggedInUser(UUID.randomUUID().toString(), accessToken)
-            return Result.Success(user)
-        } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
-        }
+    fun registration(data: JSONObject): String {
+        val url = "https://easypay-unito.herokuapp.com/api/clienti"
+        val data = getJSON(data, url)
+        val idconto = data.getString("id_conto")
+        return idconto
     }
 
     @Throws(Throwable::class)
@@ -31,7 +25,6 @@ class ModelRegistrazione : ViewModel() {
         var token = JSONObject()
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
 
-        Log.d("REG", "2")
         StrictMode.setThreadPolicy(policy)
         val url = URL(urlString)
         val urlConnection = (url.openConnection() as HttpsURLConnection).apply {
@@ -55,12 +48,9 @@ class ModelRegistrazione : ViewModel() {
             }
         }
         if(urlConnection.responseCode != HttpsURLConnection.HTTP_OK){
-            Log.d("REG", urlConnection.responseCode.toString())
             throw Throwable("HTTP error code: " + urlConnection.responseCode)
         }
         urlConnection.disconnect()
-
-        Log.d("REG", "4")
         return token
     }
 

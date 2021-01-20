@@ -22,7 +22,7 @@
         android:id="@+id/navigation_movimenti"
         android:name="com.unito.easypay.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_navigation_payment_to_navigation_profile"
             app:destination="@id/navigation_profile" />
@@ -67,8 +67,8 @@
             android:id="@+id/action_registrationCliente_to_registration"
             app:destination="@id/registration" />
         <action
-            android:id="@+id/action_registrationCliente_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+            android:id="@+id/action_registrationCliente_to_open_app"
+            app:destination="@id/open_app" />
     </fragment>
     <fragment
         android:id="@+id/registrationCommerciante"
@@ -79,8 +79,8 @@
             android:id="@+id/action_registrationCommerciante_to_registration"
             app:destination="@id/registration" />
         <action
-            android:id="@+id/action_registrationCommerciante_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+            android:id="@+id/action_registrationCommerciante_to_open_app"
+            app:destination="@id/open_app" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"

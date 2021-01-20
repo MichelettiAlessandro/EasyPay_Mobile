@@ -11,22 +11,29 @@ import javax.net.ssl.HttpsURLConnection
 
 class DashboardViewModel : ViewModel() {
 
-    fun getUser(token : String): JSONObject {
-        val urlstring = "https://easypay-unito.herokuapp.com/api/clienti/self"
-        val userData = getMovimenti(urlstring, token)
-        return userData
+    /*
+    {
+    "id": 1,
+    "budget": 20.0,
+    "saldo": 0.0,
+    "uscite": [],
+    "entrate": [],
+    "availableBudget": 20.0,
+    "movimenti": [],
+    "id_cliente": 1
     }
-
-    private fun getMovimenti(urlString: String, accessToken: String): JSONObject {
+    */
+    fun getMovimenti(accessToken: String): JSONObject {
+        val urlstring = "https://reactnative.dev/movies.json" // https://easypay-unito.herokuapp.com/api/conti/self
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
         var result = JSONObject()
-        var newtoken : String = accessToken
-        val token = "" + newtoken
+        //var newtoken : String = accessToken
+        //val token = "" + newtoken
         StrictMode.setThreadPolicy(policy)
-        val url = URL(urlString)
+        val url = URL(urlstring)
         val urlConnection = (url.openConnection() as HttpsURLConnection).apply {
             requestMethod = "GET"
-            setRequestProperty("Authorization", "Bearer $token")
+            //setRequestProperty("Authorization", "Bearer $token")
             readTimeout = 15000
             connectTimeout = 15000
             doOutput = false
@@ -36,7 +43,6 @@ class DashboardViewModel : ViewModel() {
             HttpsURLConnection.HTTP_OK -> {
                 val bufferedReader = urlConnection.inputStream.bufferedReader()
                 result = JSONObject(bufferedReader.use { it.readText() })
-                Log.d("TEST", result.toString())
                 bufferedReader.close()
             }
         }

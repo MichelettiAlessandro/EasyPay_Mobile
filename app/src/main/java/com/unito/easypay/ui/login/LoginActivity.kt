@@ -5,24 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import com.unito.easypay.MainActivity
 import com.unito.easypay.R
-import com.unito.easypay.Registration
 import com.unito.easypay.data.LoginDataSource
-import com.unito.easypay.data.model.LoggedInUser
-import com.unito.easypay.ui.profile.ProfileFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-        val username = findViewById<EditText>(R.id.username)
+        val username = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
 
@@ -45,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
-            // disable login button unless both username / password is valid
+            // disable login button unless both email / password is valid
             login.isEnabled = loginState.isDataValid
 
             if (loginState.usernameError != null) {
