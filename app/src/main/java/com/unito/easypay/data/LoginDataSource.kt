@@ -15,14 +15,14 @@ import java.net.URL
 class LoginDataSource {
 
     fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
+        return try {
             val urlstring = "https://easypay-unito.herokuapp.com/api/login"
             val token = getJSON(username, password, urlstring)
             val accessToken = token.getString("token")
             val User = LoggedInUser(java.util.UUID.randomUUID().toString(), accessToken)
-            return Result.Success(User)
+            Result.Success(User)
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            Result.Error(IOException("Error logging in", e))
         }
     }
 

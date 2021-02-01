@@ -7,18 +7,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.unito.easypay.R
+import com.unito.easypay.ui.profile.ProfileViewModel
+import org.json.JSONArray
 import org.json.JSONObject
 
 data class Movement(
     val data : String,
     var description : String,
-    val importo : String
+    val importo : Double,
+    val type : String
 )
 
 class DashboardFragment : Fragment() {
@@ -26,6 +31,7 @@ class DashboardFragment : Fragment() {
     private lateinit var dashboardViewModel: DashboardViewModel
     private var myListener: OnListFragmentInteractionListener? = null
     private lateinit var MovList : List<Array<String>>
+    private var profileViewModel = ProfileViewModel()
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreateView(
@@ -43,28 +49,56 @@ class DashboardFragment : Fragment() {
             token = shared.getString("token", "dafValue").toString()
         }
         if(token != "") {
-            var userDataJSON = dashboardViewModel.getMovimenti(token)
-            //Log.d("USER", userDataJSON.toString())
-            // {"id":1,"budget":20,"saldo":0,"uscite":[],"entrate":[],"movimenti":[],"availableBudget":20,"id_cliente":1}
-            var title = userDataJSON.getString("title")
-            var descr = userDataJSON.getString("description")
-            //var saldo = userDataJSON.getString("saldo")
-            //var availableBudget = userDataJSON.getString("availableBudget")
-            //var inMovements = userDataJSON.get("uscite")
-            //var outMovements = userDataJSON.get("entrate")
-            var movementsJSON  = userDataJSON.getJSONArray("movies")
+            var descriptionMov = ""
+            var type = ""
+            var importoRV = ""
+            var importo : Double
+            val user = profileViewModel.getUser(token)
+            val id = user.getInt("id_conto")
+            val userDataJSON = dashboardViewModel.getMovimenti(token, id)
+            Log.d("MOVIMENTI", userDataJSON.toString())
+
+            val movementsJSON  = userDataJSON.getJSONArray("movimenti")
+            val budgetConto : Double = userDataJSON.get("budget") as Double
+            val saldoConto : Double = userDataJSON.get("saldo") as Double
+
+            view.findViewById<TextView>(R.id.saldoContoField).text = saldoConto.toString()
+            view.findViewById<TextView>(R.id.budgetContoField).text = budgetConto.toString()
+
             val listdata = ArrayList<Movement>()
-            if (movementsJSON != null) {
-                for (i in 0 until movementsJSON.length()) {
-                    var x : JSONObject = movementsJSON[i] as JSONObject
-                    var obj = Movement(x.get("id") as String, x.get("title") as String, x.get("releaseYear") as String)
-                    listdata.add(obj)
+            for (i in 0 until movementsJSON.length()) {
+                val x : JSONObject = movementsJSON[i] as JSONObject
+
+                var data = x.get("timestamp") as String
+                importo = x.get("valore") as Double
+                data = data.substring(0,10)
+                val separated = data.split("-".toRegex()).toTypedArray()
+                var mm = separated[1]
+                if(separated[1].length == 1){
+                    mm = "0"+separated[1];
                 }
+                val dd = separated[2]
+                val yyyy = separated[0]
+                val dateMov = "$dd-$mm-$yyyy"
+                if(x.get("type") == "pagamento"){
+                    descriptionMov = x.get("to_name") as String
+                    type = "P"
+                }
+                if(x.get("type") == "ricarica"){
+                    type = "R"
+                    if(x.get("from_name") is String){
+                        descriptionMov = x.get("from_name") as String
+                    }else{
+                        descriptionMov = "Ricarica presso ATM"
+                    }
+                }
+
+                val obj = Movement(dateMov,  descriptionMov , importo  , type )
+                listdata.add(obj)
             }
-            Log.d("MOVIMENTI", listdata.toString())
 
             //Add the following lines to create RecyclerView
-            var rv : RecyclerView = view.findViewById<View>(R.id.recyclerView) as RecyclerView
+            val rv : RecyclerView = view.findViewById<View>(R.id.recyclerView) as RecyclerView
             rv.setHasFixedSize(true)
             rv.layoutManager = LinearLayoutManager(view.context)
             rv.adapter = MovementRecyclerViewAdapter(listdata)

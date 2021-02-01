@@ -14,10 +14,12 @@ import androidx.lifecycle.ViewModelProviders
 import com.unito.easypay.MainActivity
 import com.unito.easypay.R
 import com.unito.easypay.data.model.LoggedInUser
+import com.unito.easypay.ui.profile.ProfileViewModel
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private var profileViewModel = ProfileViewModel()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,11 +35,14 @@ class HomeFragment : Fragment() {
             token = shared.getString("token", "dafValue").toString()
         }
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
         val image = root.findViewById<ImageView>(R.id.idQRcode)
 
-        if (token != "") {
-            var qrcode = homeViewModel.getQRCodeImage(token)
+        var user = profileViewModel.getUser(token)
+        if (user.length() != 0) {
+            val otp = user.getString("otp")
+            val id = user.getString("id_conto")
+            val stringToEncode = "$id-$otp"
+            var qrcode = homeViewModel.getQRCodeImage(stringToEncode)
             image.setImageBitmap(qrcode)
         }
 

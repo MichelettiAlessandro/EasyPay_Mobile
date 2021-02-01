@@ -13,16 +13,21 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="labelProfile">Il tuo profilo</string>
     <string name="profileName">Nome</string>
     <string name="profileCognome">Cognome</string>
     <string name="profileDatanascita">Data di nascita</string>
     <string name="profileCodicefiscale">Codice Fiscale</string>
     <string name="profileTelefono">Telefono</string>
     <string name="profileAddress">Indirizzo</string>
+    <string name="profileEmail">Email</string>
     <string name="profileUsername">Username</string>
     <string name="profilePartitaIva">Partita Iva</string>
     <string name="profileRagioneSociale">Ragione Sociale</string>
     <string name="registrati">Non sei registrato? Registrati QUI</string>
+    <string name="QRcode"> QR Code </string>
+    <string name="FindMap"> MOSTRA MAPPA </string>
+    <string name="FindMapLabel"> Trova i commercianti vicino a te! </string>
     <string name="isCliente">Cliente</string>
     <string name="isCommerciante">Commerciante</string>
     <string name="avanti">Avanti</string>

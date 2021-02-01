@@ -10,23 +10,26 @@
 
     <TextView
         android:id="@+id/saldoContoLabel"
-        android:layout_width="85dp"
-        android:layout_height="29dp"
+        android:layout_width="87dp"
+        android:layout_height="33dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:text="@string/saldoconto"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="408dp"
-        android:layout_height="542dp"
+        android:layout_width="391dp"
+        android:layout_height="549dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +43,9 @@
     <TextView
         android:id="@+id/budgetContoLabel"
         android:layout_width="85dp"
-        android:layout_height="29dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="36dp"
         android:text="@string/budgetconto"
         android:textColor="#FFFFFF"
@@ -50,36 +55,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.165" />
 
     <EditText
         android:id="@+id/budgetContoField"
-        android:layout_width="138dp"
-        android:layout_height="45dp"
+        android:layout_width="147dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:textColor="#13D01A"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.367" />
 
     <EditText
         android:id="@+id/saldoContoField"
-        android:layout_width="138dp"
-        android:layout_height="45dp"
+        android:layout_width="144dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:textColor="#13D01A"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

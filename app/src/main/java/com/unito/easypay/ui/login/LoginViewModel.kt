@@ -1,13 +1,16 @@
 package com.unito.easypay.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import androidx.lifecycle.viewModelScope
 import com.unito.easypay.data.LoginRepository
 import com.unito.easypay.data.Result
 
 import com.unito.easypay.R
+import kotlinx.coroutines.*
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -17,15 +20,37 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
+
+    /*
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
         val result = loginRepository.login(username, password)
-
+        Log.d("LOGIN", result.toString())
         if (result is Result.Success) {
             _loginResult.value =
                 LoginResult(success = LoggedInUserView(token = result.data.token))
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
+        }
+    }
+
+     */
+
+    fun login(username: String, password: String) {
+        // Create a new coroutine to move the execution off the UI thread
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = loginRepository.login(username, password)
+            Log.d("LOGIN_MODEL", result.toString())
+            // Display result of the network request to the user
+            withContext(Dispatchers.Main){
+                if (result is Result.Success) {
+                    Log.d("LOGIN_MODELOK", "CI PASSOOOOOO")
+                    _loginResult.value = LoginResult(success = LoggedInUserView(token = result.data.token))
+                } else {
+                    _loginResult.value = LoginResult(error = R.string.login_failed)
+                }
+            }
+
         }
     }
 
