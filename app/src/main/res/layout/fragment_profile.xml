@@ -7,74 +7,207 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/fieldCF"
-        android:layout_width="162dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="18sp"
+        android:id="@+id/labelProfile"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/labelProfile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toTopOf="@+id/idQRcode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldCognome" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947" />
 
     <TextView
-        android:id="@+id/fieldNome"
-        android:layout_width="162dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="220dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/fieldCognome"
-        android:layout_width="162dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="72dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="220dp"
-        android:text="@string/profileName"
-        app:layout_constraintEnd_toStartOf="@+id/fieldNome"
-        app:layout_constraintHorizontal_bias="0.569"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="79dp"
+        android:id="@+id/labelNome"
+        android:layout_width="134dp"
         android:layout_height="39dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/profileCognome"
-        app:layout_constraintEnd_toStartOf="@+id/fieldCognome"
-        app:layout_constraintHorizontal_bias="0.534"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfileNome"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/labelProfile" />
 
     <TextView
-        android:id="@+id/fieldData"
-        android:layout_width="100dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/profileDatanascita"
-        app:layout_constraintEnd_toStartOf="@+id/fieldCF"
-        app:layout_constraintHorizontal_bias="0.553"
+        android:id="@+id/labelCognome"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileCognome"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfileCognome"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/labelNome" />
 
+    <TextView
+        android:id="@+id/fieldProfileCF"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileCognome" />
+
+    <TextView
+        android:id="@+id/fieldProfileDataNascita"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileCF" />
+
+    <TextView
+        android:id="@+id/fieldProfilePhone"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileDataNascita" />
+
+    <TextView
+        android:id="@+id/fieldProfileAddress"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfilePhone" />
+
+    <TextView
+        android:id="@+id/fieldProfileEmail"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileAddress" />
+
+    <TextView
+        android:id="@+id/labelCF"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileCodicefiscale"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfileCF"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelCognome" />
+
+    <TextView
+        android:id="@+id/labelDataNascita"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileDatanascita"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfileDataNascita"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelCF" />
+
+    <TextView
+        android:id="@+id/labelPhone"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileTelefono"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfilePhone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelDataNascita" />
+
+    <TextView
+        android:id="@+id/labelAddress"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileAddress"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelPhone" />
+
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/rubik_light"
+        android:text="@string/profileEmail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/fieldProfileEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelAddress" />
+
+    <TextView
+        android:id="@+id/fieldProfileCognome"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileNome" />
+
+    <TextView
+        android:id="@+id/fieldProfileNome"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelProfile" />
 </androidx.constraintlayout.widget.ConstraintLayout>

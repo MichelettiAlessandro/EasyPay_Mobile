@@ -29,18 +29,58 @@ class ProfileFragment : Fragment() {
         if (shared != null) {
             token = shared.getString("token", "dafValue").toString()
         }
+        /* "id": 3,
+            "otp": "646825",
+            "nome": "Ababua",
+            "cognome": "Bau",
+            "cf": "SNHFAIHCFIUHFHSYDCUHND",
+            "phone": "+390123456789",
+            "address": "Strada grande",
+            "createdAt": "2021-01-13T19:02:55.402+0000",
+            "updatedAt": "2021-01-13T19:02:55.402+0000",
+            "ragSoc": "Pizzeria Mare Blu",
+            "point": null,
+            "piva": "SHKVIYNGARCNIYHCFAIHIANHAI",
+            "birth_date": "1989-11-23T00:00:00.000+0000",
+            "type": "commerciante",
+            "id_conto": 3,
+            "email": "user3@gmail.com"
+        */
         if(token != ""){
-            var userData  = profileViewModel.getUser(token)
-            var nome = userData.getString("nome")
-            var cognome = userData.getString("cognome")
-            var cf = userData.getString("cf")
+            val userData  = profileViewModel.getUser(token)
+            val nome = userData.getString("nome")
+            val cognome = userData.getString("cognome")
+            val cf = userData.getString("cf")
+            var birth_date = userData.getString("birth_date")
+            birth_date = birth_date.substring(0,10)
 
-            val fieldNome = root.findViewById<TextView>(R.id.fieldNome)
-            fieldNome.text = nome
-            val fieldCognome = root.findViewById<TextView>(R.id.fieldCognome)
-            fieldCognome.text = cognome
-            val fieldCF = root.findViewById<TextView>(R.id.fieldCF)
-            fieldCF.text = cf
+            val separated = birth_date.split("-".toRegex()).toTypedArray()
+            var mm = separated[1]
+            if(separated[1].length == 1){
+                mm = "0"+separated[1];
+            }
+            val dd = separated[2]
+            val yyyy = separated[0]
+            val newDate = "$dd-$mm-$yyyy"
+
+            val phone = userData.getString("phone")
+            val address = userData.getString("address")
+            val email = userData.getString("email")
+
+            val fieldProfileNome = root.findViewById<TextView>(R.id.fieldProfileNome)
+            fieldProfileNome.text = nome
+            val fieldProfileCognome = root.findViewById<TextView>(R.id.fieldProfileCognome)
+            fieldProfileCognome.text = cognome
+            val fieldProfileCF = root.findViewById<TextView>(R.id.fieldProfileCF)
+            fieldProfileCF.text = cf
+            val fieldProfileDataNascita = root.findViewById<TextView>(R.id.fieldProfileDataNascita)
+            fieldProfileDataNascita.text = newDate
+            val fieldProfilePhone = root.findViewById<TextView>(R.id.fieldProfilePhone)
+            fieldProfilePhone.text = phone
+            val fieldProfileAddress = root.findViewById<TextView>(R.id.fieldProfileAddress)
+            fieldProfileAddress.text = address
+            val fieldProfileEmail = root.findViewById<TextView>(R.id.fieldProfileEmail)
+            fieldProfileEmail.text = email
         }
         return root
     }

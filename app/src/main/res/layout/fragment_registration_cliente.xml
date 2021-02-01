@@ -9,7 +9,7 @@
     tools:context=".RegistrationCliente">
 
     <AutoCompleteTextView
-        android:id="@+id/fieldNome"
+        android:id="@+id/fieldProfileNome"
         android:layout_width="222dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldDataNascita" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileDataNascita" />
 
     <EditText
         android:id="@+id/fieldAddress"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldDataNascita" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileDataNascita" />
 
     <EditText
         android:id="@+id/fieldPassword"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fieldEmail" />
 
     <AutoCompleteTextView
-        android:id="@+id/fieldCognome"
+        android:id="@+id/fieldProfileCognome"
         android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldNome" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileNome" />
 
     <AutoCompleteTextView
         android:id="@+id/fieldCodiceFiscale"
@@ -109,10 +109,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldCognome" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldProfileCognome" />
 
     <EditText
-        android:id="@+id/fieldDataNascita"
+        android:id="@+id/fieldProfileDataNascita"
         android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
