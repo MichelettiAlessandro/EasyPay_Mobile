@@ -1,5 +1,6 @@
 package com.unito.easypay.ui.dashboard
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,13 @@ class MovementRecyclerViewAdapter(val data: ArrayList<Movement>) :
         fun bind(u : Movement){
             dataobj.text = u.data
             descr.text = u.description
-            importo.text = u.importo
+            importo.text = u.importo.toString()
+            if(u.type == "P"){
+                importo.setTextColor(Color.rgb(205,55,55))
+            }
+            if(u.type == "R"){
+                importo.setTextColor(Color.rgb(58,172,63))
+            }
         }
     }
 }
