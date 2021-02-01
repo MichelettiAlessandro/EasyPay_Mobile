@@ -23,8 +23,8 @@ class DashboardViewModel : ViewModel() {
     "id_cliente": 1
     }
     */
-    fun getMovimenti(accessToken: String): JSONObject {
-        val urlstring = "https://reactnative.dev/movies.json" // https://easypay-unito.herokuapp.com/api/conti/self
+    fun getMovimenti(accessToken: String, idconto : Int): JSONObject {
+        val urlstring = "https://easypay-unito.herokuapp.com/api/movimenti?conto=$idconto"
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
         var result = JSONObject()
         //var newtoken : String = accessToken
@@ -33,7 +33,7 @@ class DashboardViewModel : ViewModel() {
         val url = URL(urlstring)
         val urlConnection = (url.openConnection() as HttpsURLConnection).apply {
             requestMethod = "GET"
-            //setRequestProperty("Authorization", "Bearer $token")
+            setRequestProperty("Authorization", "Bearer $accessToken")
             readTimeout = 15000
             connectTimeout = 15000
             doOutput = false

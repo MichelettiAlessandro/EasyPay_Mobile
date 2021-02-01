@@ -44,42 +44,12 @@
             app:destination="@id/navigation_payment" />
     </fragment>
     <fragment
-        android:id="@+id/registration"
-        android:name="com.unito.easypay.Registration"
-        android:label="Registrazione"
-        tools:layout="@layout/fragment_registration">
-        <action
-            android:id="@+id/action_registration_to_registrationCommerciante"
-            app:destination="@id/registrationCommerciante" />
-        <action
-            android:id="@+id/action_registration_to_registrationCliente"
-            app:destination="@id/registrationCliente" />
-        <action
-            android:id="@+id/action_registration_to_open_app"
-            app:destination="@id/open_app" />
-    </fragment>
-    <fragment
         android:id="@+id/registrationCliente"
         android:name="com.unito.easypay.RegistrationCliente"
         android:label="Registrazione Cliente"
         tools:layout="@layout/fragment_registration_cliente">
         <action
-            android:id="@+id/action_registrationCliente_to_registration"
-            app:destination="@id/registration" />
-        <action
             android:id="@+id/action_registrationCliente_to_open_app"
-            app:destination="@id/open_app" />
-    </fragment>
-    <fragment
-        android:id="@+id/registrationCommerciante"
-        android:name="com.unito.easypay.RegistrationCommerciante"
-        android:label="Registrazione Commerciante"
-        tools:layout="@layout/fragment_registration_commerciante">
-        <action
-            android:id="@+id/action_registrationCommerciante_to_registration"
-            app:destination="@id/registration" />
-        <action
-            android:id="@+id/action_registrationCommerciante_to_open_app"
             app:destination="@id/open_app" />
     </fragment>
     <activity
@@ -93,13 +63,13 @@
         android:label="@string/welcome"
         tools:layout="@layout/fragment_open_app">
         <action
-            android:id="@+id/action_open_app_to_registration"
-            app:destination="@id/registration" />
-        <action
             android:id="@+id/action_open_app_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
             android:id="@+id/action_open_app_to_navigation_profile"
             app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_open_app_to_registrationCliente"
+            app:destination="@id/registrationCliente" />
     </fragment>
 </navigation>

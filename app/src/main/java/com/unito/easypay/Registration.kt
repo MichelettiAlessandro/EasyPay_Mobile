@@ -43,11 +43,11 @@ class Registration : Fragment() {
         btnNext.setOnClickListener {
             if(this.reg_isCliente.isChecked){
                 this.reg_isCommerciante.setChecked(false)
-                findNavController().navigate(R.id.action_registration_to_registrationCliente)
+                //findNavController().navigate(R.id.action_registration_to_registrationCliente)
             }
             if(this.reg_isCommerciante.isChecked){
                 this.reg_isCliente.setChecked(false)
-                findNavController().navigate(R.id.action_registration_to_registrationCommerciante)
+                //findNavController().navigate(R.id.action_registration_to_registrationCommerciante)
             }
         }
         return rootview

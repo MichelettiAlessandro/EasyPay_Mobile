@@ -41,16 +41,33 @@ class RegistrationCommerciante : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(R.layout.fragment_registration_commerciante, container, false)
-        var registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
+        val rootview: View = inflater.inflate(R.layout.fragment_registration_commerciante, container, false)
+        val registrazione: Button = rootview.findViewById(R.id.registrazioneComm)
         registrazione.setOnClickListener {
 
-            var fieldNome = rootview.findViewById<TextView>(R.id.fieldNome).text.toString();
-            var fieldCognome = rootview.findViewById<TextView>(R.id.fieldCognome).text.toString();
-            var fieldCodiceFiscale = rootview.findViewById<TextView>(R.id.fieldCodiceFiscale).text.toString();
-            var fieldEmail = rootview.findViewById<TextView>(R.id.fieldEmail).text.toString();
-            var fieldPassword = rootview.findViewById<TextView>(R.id.fieldPassword).text.toString();
-            var data = JSONObject()
+            /*
+            {
+                "id": 3,
+                "otp": "646825",
+                "nome": "Ababua",
+                "cognome": "Bau",
+                "cf": "SNHFAIHCFIUHFHSYDCUHND",
+                "phone": "+390123456789",
+                "address": "Strada grande",
+                "ragSoc": "Pizzeria Mare Blu",
+                "piva": "SHKVIYNGARCNIYHCFAIHIANHAI",
+                "birth_date": "1989-11-23T00:00:00.000+0000",
+                "type": "commerciante",
+                "email": "user3@gmail.com",
+
+            }
+             */
+            val fieldNome = rootview.findViewById<TextView>(R.id.fieldProfileNome).text.toString();
+            val fieldCognome = rootview.findViewById<TextView>(R.id.fieldProfileCognome).text.toString();
+            val fieldCodiceFiscale = rootview.findViewById<TextView>(R.id.fieldCodiceFiscale).text.toString();
+            val fieldEmail = rootview.findViewById<TextView>(R.id.fieldEmail).text.toString();
+            val fieldPassword = rootview.findViewById<TextView>(R.id.fieldPassword).text.toString();
+            val data = JSONObject()
 
             data.put("nome", fieldNome)
             data.put("cognome", fieldCognome)
