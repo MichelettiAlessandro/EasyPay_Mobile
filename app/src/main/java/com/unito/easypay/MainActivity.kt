@@ -3,8 +3,7 @@ package com.unito.easypay
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.view.View.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_payment, R.id.navigation_movimenti, R.id.navigation_profile))
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        navView.visibility = INVISIBLE
+        navView.visibility = GONE
 /*
         token = intent.getStringExtra("function")
         if(token != ""){

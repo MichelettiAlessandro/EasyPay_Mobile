@@ -62,6 +62,7 @@ class DashboardFragment : Fragment() {
             val budgetConto : Double = userDataJSON.get("budget") as Double
             val saldoConto : Double = userDataJSON.get("saldo") as Double
 
+            Log.d("saldo", saldoConto.toString())
             view.findViewById<TextView>(R.id.saldoContoField).text = saldoConto.toString()
             view.findViewById<TextView>(R.id.budgetContoField).text = budgetConto.toString()
 
