@@ -57,3 +57,4 @@ Quando viene effettuato il logout, il contenuto delle SharedPreferences viene ri
 * possibilità di aggiornare il proprio profilo;
 * implementazione di nuovi metodi di pagamento e ricariche;
 * rilevamento della posizione, al momento sono state settate coordinate geografiche statiche;
+* gestione del budget per l'utente;
