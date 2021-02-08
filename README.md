@@ -43,8 +43,8 @@ Questo si occupa della navigazione tra i vari Fragment dell'app e lo si può tro
 All'interno del mobile_navigation sono state inserite le varie connessioni che ci possono essere tra i vari fragment e activities.
 
 L'app quindi, viene lanciata tramite la MainActivity, che visualizza l'Home Fragment. Da qui è possibile seguire due strade:
-* Registrazione --> comporta la compilazione di un form, che effettua alla conferma la registrazione del cliente e riporta all'interfaccia di login
-* Login --> viene generato un nuovo Intent, che permette di lanciare l'activity di Login. Questa esegue il login in modo asincrono tramite coroutines e al termine chiude l'activity. Durante il login viene salvato il Token restituito all'utente all'interno delle SharedPreferences, che permettono di salvare all'interno dell'applicazione delle informazioni utili al suo funzionamento. 
+* Registrazione --> comporta la compilazione di un form, che effettua alla conferma la registrazione del cliente e riporta all'interfaccia di login.
+* Login --> viene generato un nuovo Intent, che permette di lanciare l'activity di Login. Questa esegue il login in modo asincrono tramite coroutines e al termine chiude l'activity. Durante il login viene salvato il Token restituito all'utente all'interno delle SharedPreferences, che permettono di salvare all'interno dell'applicazione delle informazioni utili al suo funzionamento,
 
 Una volta effettuato il login, viene resa visibile la possibilità di navigare tra le interfacce, ed è stata impostata come schermata iniziale il Profilo utente.
 
@@ -53,7 +53,7 @@ Il contenuto dei vari Fragments viene ricaricato ad ogni nuova visualizzazione d
 Quando viene effettuato il logout, il contenuto delle SharedPreferences viene rimosso e l'utente viene disconnesso dall'applicazione.
 
 ## Future Updates
-* filtrare i movimenti per un periodo desiderato, per entrate / uscite
-* possibilità di aggiornare il proprio profilo
-* implementazione di nuovi metodi di pagamento
-* rilevamento della posizione
+* filtrare i movimenti per un periodo desiderato, per entrate / uscite;
+* possibilità di aggiornare il proprio profilo;
+* implementazione di nuovi metodi di pagamento e ricariche;
+* rilevamento della posizione, al momento sono state settate coordinate geografiche statiche;
