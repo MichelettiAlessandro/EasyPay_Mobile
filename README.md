@@ -9,6 +9,8 @@
 ## Intro
 
 EasyPay Mobile è la versione dedicata ad Android del metodo di pagamento EasyPay.
+Il progetto è un sotto modulo del progetto principale [EasyPay (https://github.com/Seniorsimo/EasyPay)](https://github.com/Seniorsimo/EasyPay).
+
 Questa applicazione è stata realizzata con lo scopo di fornire la possibilità di pagare presso commercianti con lo smartphone senza l'utilizzo di carte o contanti.
 Il metodo di pagamento per il momento implementato è tramite QR Code.
 
