@@ -33,7 +33,7 @@ L'applicazione è basata sull'utilizzo di Activities, Fragments e di una Navigat
 Un'activity come dice il termine, rappresentà un'attività, ovvero una funzionalità identificata all'interno dell'app.
 Ci sono due Activity:
 * Login Activity : ha il compito di fare eseguire il login all'user. Una volta eseguito il login, l'activity viene terminata.
-* MainActivity : attività che si occupa della gestiona gestione delle interfacce.
+* MainActivity : attività che si occupa della gestione delle interfacce.
 
 Infatti, quando viene creata l'activity MainActivity, viene inizializzata anche una NavigationView di tipo BottomNavigationView.
 Questa permette la visualizzazione delle 3 schermate diverse tramite un menu visualizzato nella parte bassa dello schermo una volta eseguito il login.
@@ -47,7 +47,7 @@ All'interno del mobile_navigation sono state inserite le varie connessioni che c
 
 L'app quindi, viene lanciata tramite la MainActivity, che visualizza l'Home Fragment. Da qui è possibile seguire due strade:
 * Registrazione --> comporta la compilazione di un form, che effettua alla conferma la registrazione del cliente e riporta all'interfaccia di login.
-* Login --> viene generato un nuovo Intent, che permette di lanciare l'activity di Login. Questa esegue il login in modo asincrono tramite coroutines e al termine chiude l'activity. Durante il login viene salvato il Token restituito all'utente all'interno delle SharedPreferences, che permettono di salvare all'interno dell'applicazione delle informazioni utili al suo funzionamento,
+* Login --> viene generato un nuovo Intent, classe che permette di lanciare l'activity di Login. Questa esegue il login in modo asincrono tramite coroutines e al termine chiude l'activity. Durante il login viene salvato il Token restituito all'utente all'interno delle SharedPreferences, che permettono di salvare all'interno dell'applicazione delle informazioni utili al suo funzionamento.
 
 Una volta effettuato il login, viene resa visibile la possibilità di navigare tra le interfacce, ed è stata impostata come schermata iniziale il Profilo utente.
 
