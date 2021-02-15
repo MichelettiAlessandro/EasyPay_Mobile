@@ -44,12 +44,12 @@ class RegistrationCliente : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(
+        val rootview: View = inflater.inflate(
             R.layout.fragment_registration_cliente,
             container,
             false
         )
-        var registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
+        val registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
 
         registrazione.setOnClickListener {
 

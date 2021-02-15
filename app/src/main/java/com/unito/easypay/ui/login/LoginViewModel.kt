@@ -40,17 +40,15 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         // Create a new coroutine to move the execution off the UI thread
         viewModelScope.launch(Dispatchers.IO) {
             val result = loginRepository.login(username, password)
-            Log.d("LOGIN_MODEL", result.toString())
             // Display result of the network request to the user
+
             withContext(Dispatchers.Main){
                 if (result is Result.Success) {
-                    Log.d("LOGIN_MODELOK", "CI PASSOOOOOO")
                     _loginResult.value = LoginResult(success = LoggedInUserView(token = result.data.token))
                 } else {
                     _loginResult.value = LoginResult(error = R.string.login_failed)
                 }
             }
-
         }
     }
 

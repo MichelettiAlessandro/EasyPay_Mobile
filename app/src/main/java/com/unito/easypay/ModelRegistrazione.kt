@@ -24,7 +24,7 @@ class ModelRegistrazione : ViewModel() {
     private fun getJSON(data : JSONObject, urlString : String): JSONObject {
         var token = JSONObject()
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
-
+        Log.d("REG", data.toString())
         StrictMode.setThreadPolicy(policy)
         val url = URL(urlString)
         val urlConnection = (url.openConnection() as HttpsURLConnection).apply {

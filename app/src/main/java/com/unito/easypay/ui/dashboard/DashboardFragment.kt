@@ -56,13 +56,11 @@ class DashboardFragment : Fragment() {
             val user = profileViewModel.getUser(token)
             val id = user.getInt("id_conto")
             val userDataJSON = dashboardViewModel.getMovimenti(token, id)
-            Log.d("MOVIMENTI", userDataJSON.toString())
 
             val movementsJSON  = userDataJSON.getJSONArray("movimenti")
             val budgetConto : Double = userDataJSON.get("budget") as Double
             val saldoConto : Double = userDataJSON.get("saldo") as Double
 
-            Log.d("saldo", saldoConto.toString())
             view.findViewById<TextView>(R.id.saldoContoField).text = saldoConto.toString()
             view.findViewById<TextView>(R.id.budgetContoField).text = budgetConto.toString()
 
