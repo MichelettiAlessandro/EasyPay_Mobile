@@ -1,5 +1,6 @@
 package com.unito.easypay.ui.dashboard
 
+import DashboardRepository
 import android.os.StrictMode
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,7 +10,19 @@ import org.json.JSONObject
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
+data class Params(
+        val token : String,
+        var idconto : Int,
+)
 class DashboardViewModel : ViewModel() {
+
+
+    fun getMovements(token : String, idconto : Int): JSONObject {
+
+        val params = Params(token, idconto)
+        val mapRepository = DashboardRepository()
+        return mapRepository.execute(params).get()
+    }
 
     /*
     {

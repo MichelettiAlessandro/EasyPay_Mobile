@@ -44,12 +44,12 @@ class RegistrationCliente : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(
+        val rootview: View = inflater.inflate(
             R.layout.fragment_registration_cliente,
             container,
             false
         )
-        var registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
+        val registrazione: Button = rootview.findViewById(R.id.registrazioneCli)
 
         registrazione.setOnClickListener {
 
@@ -61,10 +61,10 @@ class RegistrationCliente : Fragment() {
             val fieldAddress = rootview.findViewById<TextView>(R.id.fieldAddress).text.toString();
             val fieldBirthDate = rootview.findViewById<TextView>(R.id.fieldProfileDataNascita).text.toString();
             val fieldPassword = rootview.findViewById<TextView>(R.id.fieldPassword).text.toString();
+            val fieldConfermaPassword = rootview.findViewById<TextView>(R.id.fieldConfermaPassword).text.toString()
             val data = JSONObject()
 
-            if(!this.isValidPassword(fieldPassword)){
-                Log.d("PASS", "PASSWORD NON ACCETTATA : $fieldPassword")
+            if(!this.isValidPassword(fieldPassword) ||  (fieldConfermaPassword != fieldPassword) ){
                 showAlertDialogPassword(rootview)
             }else{
 
@@ -119,7 +119,7 @@ class RegistrationCliente : Fragment() {
     private fun showAlertDialogPassword(view: View?) {        // setup the alert builder
         val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
         builder.setTitle("Password")
-        builder.setMessage("La password deve contenere una maiuscola, una minuscola, un numero e essere lunga almeno 6 caratteri.") // add a button
+        builder.setMessage("La password deve contenere una maiuscola, una minuscola, un numero e essere lunga almeno 6 caratteri. \n\n Le password devono essere uguali") // add a button
         builder.setPositiveButton("OK", null) // create and show the alert dialog
         val dialog: AlertDialog = builder.create()
         dialog.show()

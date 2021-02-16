@@ -6,15 +6,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.unito.easypay.R
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
+    private var logoutViewModel = LogoutViewModel()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -82,6 +87,25 @@ class ProfileFragment : Fragment() {
             val fieldProfileEmail = root.findViewById<TextView>(R.id.fieldProfileEmail)
             fieldProfileEmail.text = email
         }
+
+        val buttonLogout = root.findViewById<Button>(R.id.buttonLogout)
+        buttonLogout.setOnClickListener {
+
+            val navView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+            if (navView != null) {
+                navView.visibility = View.GONE
+            }
+            if(logoutViewModel.logout(token)){
+                shared?.edit()?.remove("token")?.apply()
+                findNavController().navigate(R.id.action_navigation_profile_to_open_app)
+            }
+        }
+        /*
+                        val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("token", token)
+                }
+                startActivity(intent)
+         */
         return root
     }
 }

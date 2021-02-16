@@ -48,6 +48,7 @@ class DashboardFragment : Fragment() {
         if (shared != null) {
             token = shared.getString("token", "dafValue").toString()
         }
+        Log.d("token", token)
         if(token != "") {
             var descriptionMov = ""
             var type = ""
@@ -56,7 +57,6 @@ class DashboardFragment : Fragment() {
             val user = profileViewModel.getUser(token)
             val id = user.getInt("id_conto")
             val userDataJSON = dashboardViewModel.getMovimenti(token, id)
-            Log.d("MOVIMENTI", userDataJSON.toString())
 
             val movementsJSON  = userDataJSON.getJSONArray("movimenti")
             val budgetConto : Double = userDataJSON.get("budget") as Double

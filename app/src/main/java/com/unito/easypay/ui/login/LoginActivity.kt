@@ -49,21 +49,23 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
-            var token: String
+            val token: String
             //loading.visibility = View.GONE
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
             if (loginResult.success != null) {
                 token = loginResult.success.token
-                updateUiWithUser(loginResult.success)
+                //updateUiWithUser(loginResult.success)
                 setResult(Activity.RESULT_OK)
                 finish()
 
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("token", token)
+                    putExtra("navigation", "action_open_app_to_navigation_profile")
                 }
                 startActivity(intent)
+
             }
             //Complete and destroy login activity once successful
         })
@@ -105,11 +107,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
-        val displayName = model.token
         // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
-            "$welcome $displayName",
+            "$welcome !",
             Toast.LENGTH_LONG
         ).show()
     }
