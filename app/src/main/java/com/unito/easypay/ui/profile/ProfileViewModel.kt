@@ -25,7 +25,7 @@ class ProfileViewModel : ViewModel() {
         val userdata = profileRepository.execute(token).get()
         return userdata
     }
-
+    /*
     private fun getJSON(urlString: String, accessToken: String): JSONObject {
         val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
         var result = JSONObject()
@@ -54,4 +54,5 @@ class ProfileViewModel : ViewModel() {
         urlConnection.disconnect()
         return result
     }
+     */
 }

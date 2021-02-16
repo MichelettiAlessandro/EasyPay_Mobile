@@ -3,15 +3,13 @@ package com.unito.easypay
 import android.os.StrictMode
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.unito.easypay.data.Result
-import com.unito.easypay.data.model.LoggedInUser
 import org.json.JSONObject
-import java.io.IOException
 import java.net.URL
-import java.util.*
 import javax.net.ssl.HttpsURLConnection
 
 class ModelRegistrazione : ViewModel() {
+
+/*}
 
     fun registration(data: JSONObject): String {
         val url = "https://easypay-unito.herokuapp.com/api/clienti"
@@ -19,7 +17,15 @@ class ModelRegistrazione : ViewModel() {
         val idconto = data.getString("id_conto")
         return idconto
     }
+    */
 
+    fun registration(data: JSONObject): String {
+        val regRepo = RegistrazioneRepository()
+        val dataJSON = regRepo.execute(data).get()
+        return dataJSON.getString("id_conto")
+    }
+
+    /*
     @Throws(Throwable::class)
     private fun getJSON(data : JSONObject, urlString : String): JSONObject {
         var token = JSONObject()
@@ -40,8 +46,6 @@ class ModelRegistrazione : ViewModel() {
         when (urlConnection.responseCode) {
             HttpsURLConnection.HTTP_OK -> {
                 val bufferedReader = urlConnection.inputStream.bufferedReader()
-
-                Log.d("REG", "3")
                 token = JSONObject(bufferedReader.use { it.readText() })
                 Log.d("REG", token.toString())
                 bufferedReader.close()
@@ -53,5 +57,6 @@ class ModelRegistrazione : ViewModel() {
         urlConnection.disconnect()
         return token
     }
+     */
 
 }

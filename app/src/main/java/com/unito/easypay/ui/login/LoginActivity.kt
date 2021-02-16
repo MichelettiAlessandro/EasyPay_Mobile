@@ -62,8 +62,10 @@ class LoginActivity : AppCompatActivity() {
 
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("token", token)
+                    putExtra("navigation", "action_open_app_to_navigation_profile")
                 }
                 startActivity(intent)
+
             }
             //Complete and destroy login activity once successful
         })

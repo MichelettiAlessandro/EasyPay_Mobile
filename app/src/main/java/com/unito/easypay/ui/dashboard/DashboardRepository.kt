@@ -1,19 +1,24 @@
 import android.os.AsyncTask
+import android.os.StrictMode
+import com.unito.easypay.ui.dashboard.Params
 import org.json.JSONObject
+import java.io.BufferedReader
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 
-class ProfileRepository : AsyncTask<String, Void?, JSONObject>() {
+class DashboardRepository : AsyncTask<Params, Void?, JSONObject>() {
 
-        override fun doInBackground(vararg params: String): JSONObject {
-            val token: String = params[0]
+        override fun doInBackground(vararg params: Params): JSONObject {
+            val token: String = params[0].token
+            val idconto: Int = params[0].idconto
+            val urlString = "https://easypay-unito.herokuapp.com/api/movimenti?conto=$idconto"
+            val policy = StrictMode.ThreadPolicy.Builder().permitNetwork().build()
             var result = JSONObject()
-            val stringUrl = "https://easypay-unito.herokuapp.com/api/clienti/self"
-            //Create a URL object holding our url
-            val url : URL  = URL(stringUrl);         //Create a connection
+            StrictMode.setThreadPolicy(policy)
+            val url = URL(urlString)
             val urlConnection = (url.openConnection() as HttpsURLConnection).apply {
                 requestMethod = "GET"
                 setRequestProperty("Authorization", "Bearer $token")
@@ -22,7 +27,6 @@ class ProfileRepository : AsyncTask<String, Void?, JSONObject>() {
                 doOutput = false
                 connect()
             }
-
             when (urlConnection.responseCode) {
                 HttpsURLConnection.HTTP_OK -> {
                     val bufferedReader = urlConnection.inputStream.bufferedReader()
@@ -31,7 +35,7 @@ class ProfileRepository : AsyncTask<String, Void?, JSONObject>() {
                 }
             }
             if(urlConnection.responseCode != HttpsURLConnection.HTTP_OK){
-                return result
+                throw Throwable("HTTP error code: " + urlConnection.responseCode)
             }
             urlConnection.disconnect()
             return result

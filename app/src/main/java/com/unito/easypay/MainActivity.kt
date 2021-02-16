@@ -3,6 +3,7 @@ package com.unito.easypay
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -29,25 +30,23 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.visibility = GONE
-/*
-        token = intent.getStringExtra("function")
-        if(token != ""){
-        }
-
- */
     }
 
     override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.visibility = VISIBLE
-        super.onNewIntent(intent)
-        val token = intent.getStringExtra("token")?: "Default values if not provided"
-        val sharedPref = this?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with (sharedPref.edit()) {
-            putString("token", token)
-            commit()
+        val navigation = intent.getStringExtra("navigation")?: "Default values if not provided"
+        Log.d("navigation", navigation)
+        if(navigation == "action_open_app_to_navigation_profile"){
+            val token = intent.getStringExtra("token")?: ""
+            val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+            with (sharedPref.edit()) {
+                putString("token", token)
+                commit()
+            }
+            val navController = findNavController(R.id.nav_host_fragment)
+            navController.navigate(R.id.action_open_app_to_navigation_profile)
         }
-        val navController = findNavController(R.id.nav_host_fragment)
-        navController.navigate(R.id.action_open_app_to_navigation_profile)
     }
 }

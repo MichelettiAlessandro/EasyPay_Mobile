@@ -48,6 +48,7 @@ class DashboardFragment : Fragment() {
         if (shared != null) {
             token = shared.getString("token", "dafValue").toString()
         }
+        Log.d("token", token)
         if(token != "") {
             var descriptionMov = ""
             var type = ""
