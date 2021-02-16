@@ -36,12 +36,12 @@ class open_app : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootview: View = inflater.inflate(R.layout.fragment_open_app, container, false)
-        var btnReg: Button = rootview.findViewById(R.id.btn_registrati)
+        val rootview: View = inflater.inflate(R.layout.fragment_open_app, container, false)
+        val btnReg: Button = rootview.findViewById(R.id.btn_registrati)
         btnReg.setOnClickListener {
             findNavController().navigate(R.id.action_open_app_to_registrationCliente)
         }
-        var btnLog: Button = rootview.findViewById(R.id.btn_login)
+        val btnLog: Button = rootview.findViewById(R.id.btn_login)
         btnLog.setOnClickListener {
             findNavController().navigate(R.id.action_open_app_to_loginActivity)
         }

@@ -36,7 +36,10 @@
     <string name="confermaPassword">Conferma Password</string>
     <string name="saldoconto">Saldo</string>
     <string name="budgetconto">Budget</string>
+    <string name="logout">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registratiUtente">Registrati</string>
+    <string name="loginUtente">Login</string>
 </resources>

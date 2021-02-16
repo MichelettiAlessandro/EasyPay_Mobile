@@ -21,15 +21,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintHorizontal_bias="0.775"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.244" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="391dp"
-        android:layout_height="549dp"
+        android:layout_height="544dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
 
     <TextView
         android:id="@+id/budgetContoLabel"
-        android:layout_width="85dp"
+        android:layout_width="94dp"
         android:layout_height="33dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
@@ -53,43 +53,37 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.244" />
 
-    <EditText
-        android:id="@+id/budgetContoField"
-        android:layout_width="147dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.367" />
-
-    <EditText
+    <TextView
         android:id="@+id/saldoContoField"
-        android:layout_width="144dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/budgetContoField"
+        app:layout_constraintTop_toBottomOf="@+id/saldoContoLabel"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/budgetContoField"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:fontFamily="@font/rubik_light"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FAFAFA"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintTop_toBottomOf="@+id/budgetContoLabel"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
