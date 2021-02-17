@@ -10,6 +10,9 @@
 
 EasyPay Mobile è la versione dedicata ad Android del metodo di pagamento EasyPay.
 
+E' possibile scaricare l'ultima build nella sezione Releases a lato oppure tramite il seguente link:
+[easypay-v0.1.apk](https://github.com/MichelettiAlessandro/EasyPay_Mobile/releases/download/v0.1/easypay-v0.1.apk)
+
 Il progetto è un sotto modulo del progetto principale [EasyPay (https://github.com/Seniorsimo/EasyPay)](https://github.com/Seniorsimo/EasyPay).
 
 Questa applicazione è stata realizzata con lo scopo di fornire la possibilità di pagare presso commercianti con lo smartphone senza l'utilizzo di carte o contanti.
